@@ -26,6 +26,13 @@ class SignInViewModel extends BaseViewModel {
     notifyListeners();
   }
 
+  @override
+  void dispose() {
+    password.dispose();
+    email.dispose();
+    super.dispose();
+  }
+
   check() async {
     await login(
       emails.text.trim(),

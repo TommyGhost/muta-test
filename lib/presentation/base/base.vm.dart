@@ -4,13 +4,11 @@ import '../../data/core/view_state.dart';
 import '../../data/repository/user_repository.dart';
 import '../../data/services/app_cache.dart';
 import '../../data/services/navigation_service.dart';
-import '../../data/services/storage-service.dart';
 import '../../locator.dart';
 
 class BaseViewModel extends ChangeNotifier {
   ViewState _viewState = ViewState.Idle;
   String? errorMessage;
-  StorageService storageService = getIt<StorageService>();
   NavigationService navigationService = getIt<NavigationService>();
   UserRepository userRepository = getIt<UserRepository>();
   AppCache cache = getIt<AppCache>();
@@ -66,7 +64,6 @@ class BaseViewModel extends ChangeNotifier {
 class LoadBaseViewModel extends ChangeNotifier {
   ViewState _viewState = ViewState.Idle;
   String? errorMessage;
-  StorageService storageService = getIt<StorageService>();
   NavigationService navigationService = getIt<NavigationService>();
   UserRepository userRepository = getIt<UserRepository>();
   AppCache cache = getIt<AppCache>();

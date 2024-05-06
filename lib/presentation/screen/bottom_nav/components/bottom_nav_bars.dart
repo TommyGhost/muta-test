@@ -36,10 +36,10 @@ class BottomNavBarState extends State<BottomNavBar> {
       decoration: BoxDecoration(
         color: Theme.of(context).bottomNavigationBarTheme.backgroundColor,
         border: const Border(
-          top: BorderSide(color: Pallet.outlineBorder),
+          top: BorderSide(color: Pallet.outlineBorder2),
         ),
       ),
-      padding: EdgeInsets.only(top: 0.h),
+      margin: EdgeInsets.only(top: 16.h),
       child: SafeArea(
         top: true,
         bottom: true,

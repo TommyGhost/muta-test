@@ -4,6 +4,7 @@ import 'package:babelos_app/utils/__utils.dart';
 import 'package:babelos_app/widgets/__widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:babelos_app/presentation/base/base_ui.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SignUp extends StatelessWidget {
   const SignUp({super.key});
@@ -59,8 +60,12 @@ class SignUp extends StatelessWidget {
                 40.0.sbH,
                 InputField(
                   underline: true,
+                  suffixIcon: GestureDetector(
+                    onTap: () => model.email.clear(),
+                    child: Icon(Icons.close, size: 24.r, color: Pallet.wsBlue),
+                  ),
                   keyBoardType: TextInputType.emailAddress,
-                  hintText: AppStrings.enterEmail,
+                  topLabel: AppStrings.enterEmail,
                   controller: model.email,
                   autofillHints: const [AutofillHints.email],
                   validator: (val) {

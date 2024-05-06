@@ -14,7 +14,9 @@ class SignInDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BaseView<SignInViewModel>(
-      onModelReady: (model) {},
+      onModelReady: (model) {
+        model.emails = TextEditingController(text: email);
+      },
       builder: (context, model, child) => Scaffold(
         appBar: const Navbar(
           elevation: 0,
@@ -40,7 +42,7 @@ class SignInDetails extends StatelessWidget {
                   underline: true,
                   topLabel: AppStrings.email,
                   keyBoardType: TextInputType.emailAddress,
-                  controller: model.emails = TextEditingController(text: email),
+                  controller: model.emails,
                   autofillHints: const [AutofillHints.email],
                   validator: (val) {
                     String validate = val!.replaceAll(RegExp(r"\s+"), "");
@@ -78,6 +80,7 @@ class SignInDetails extends StatelessWidget {
                     return null;
                   },
                   autovalidateMode: model.autovalidateMode,
+                  textCapitalization: TextCapitalization.none,
                   textInputAction: TextInputAction.done,
                 ),
                 16.0.sbH,
@@ -114,7 +117,7 @@ class SignInDetails extends StatelessWidget {
                     ),
                     BabInkWell(
                       onTap: () {
-                        navigationService.navigateTo(AppRoutes.signIn);
+                        navigationService.navigateTo(AppRoutes.langSel);
                       },
                       child: Text(
                         ' ${AppStrings.signup}',

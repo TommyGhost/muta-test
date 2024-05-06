@@ -7,7 +7,6 @@ import 'package:babelos_app/presentation/base/base_ui.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-
 class SignUpDetails extends StatelessWidget {
   const SignUpDetails({super.key, required this.email});
 
@@ -16,7 +15,9 @@ class SignUpDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BaseView<SignUpViewModel>(
-      onModelReady: (model) {},
+      onModelReady: (model) {
+        model.emails = TextEditingController(text: email);
+      },
       builder: (context, model, child) => Scaffold(
         appBar: const Navbar(
           elevation: 0,
@@ -42,7 +43,7 @@ class SignUpDetails extends StatelessWidget {
                   underline: true,
                   topLabel: AppStrings.email,
                   keyBoardType: TextInputType.emailAddress,
-                  controller: model.emails = TextEditingController(text: email),
+                  controller: model.emails,
                   autofillHints: const [AutofillHints.email],
                   validator: (val) {
                     String validate = val!.replaceAll(RegExp(r"\s+"), "");
@@ -57,6 +58,7 @@ class SignUpDetails extends StatelessWidget {
                 ),
                 32.0.sbH,
                 InputField(
+                  underline: true,
                   topLabel: AppStrings.firstName,
                   controller: model.firstName,
                   autofillHints: const [AutofillHints.name],
@@ -70,6 +72,7 @@ class SignUpDetails extends StatelessWidget {
                 ),
                 32.0.sbH,
                 InputField(
+                  underline: true,
                   topLabel: AppStrings.lastName,
                   controller: model.lastName,
                   autofillHints: const [AutofillHints.name],
@@ -83,6 +86,7 @@ class SignUpDetails extends StatelessWidget {
                 ),
                 32.0.sbH,
                 InputField(
+                  underline: true,
                   suffixIcon: GestureDetector(
                     onTap: () => model.password.clear(),
                     child: Icon(Icons.close, size: 24.r, color: Pallet.wsBlue),
@@ -98,6 +102,7 @@ class SignUpDetails extends StatelessWidget {
                     return null;
                   },
                   autovalidateMode: model.autovalidateMode,
+                  textCapitalization: TextCapitalization.none,
                   textInputAction: TextInputAction.done,
                 ),
                 8.0.sbH,
@@ -106,19 +111,16 @@ class SignUpDetails extends StatelessWidget {
                     Icon(
                       Icons.check,
                       size: 16.r,
-                      color: model.password.text.length < 8
-                          ? Colors.red
-                          : Pallet.validateGreen,
+                      color: model.getTextColor(model.password.text.length),
                     ),
                     8.0.sbW,
                     Text(
                       AppStrings.use8,
                       style: getRegularStyle(
-                          fontSize: FontSize.s12,
-                          height: 16.0.toFigmaHeight(12),
-                          color: model.password.text.length < 8
-                              ? Colors.red
-                              : Pallet.validateGreen),
+                        fontSize: FontSize.s12,
+                        height: 16.0.toFigmaHeight(12),
+                        color: model.getTextColor(model.password.text.length),
+                      ),
                     ),
                   ],
                 ),
@@ -126,10 +128,12 @@ class SignUpDetails extends StatelessWidget {
                 BabButton(
                   loading: model.isLoading,
                   onPressed: () async {
-                    SharedPreferences prefs = await SharedPreferences.getInstance();
+                    SharedPreferences prefs =
+                        await SharedPreferences.getInstance();
                     FocusManager.instance.primaryFocus?.unfocus();
-                    if (model.formKey.currentState!.validate()) {                  
-                      String lang = prefs.getString(sharedPreference.languageKey)!;
+                    if (model.formKey.currentState!.validate()) {
+                      String lang =
+                          prefs.getString(sharedPreference.languageKey)!;
                       model.check(lang);
                     } else {
                       model.setValidateMode(AutovalidateMode.onUserInteraction);
@@ -154,7 +158,7 @@ class SignUpDetails extends StatelessWidget {
                       },
                       child: Text(
                         ' ${AppStrings.login}',
-                        style:  TextStyle(
+                        style: TextStyle(
                           fontSize: FontSize.s13,
                           fontFamily: AppStrings.fontFamily,
                           fontWeight: FontWeight.w400,

@@ -2,13 +2,11 @@
 import 'package:flutter/material.dart';
 import '../data/cache/sharedpreferences.dart';
 import '../data/services/navigation_service.dart';
-import '../data/services/storage-service.dart';
 import '../locator.dart';
 
 
 
 final SharedPreference sharedPreference = SharedPreference();
-final StorageService storageService = getIt<StorageService>();
 final NavigationService navigationService = getIt<NavigationService>();
 
 

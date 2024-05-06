@@ -83,8 +83,9 @@ class SelectLangLearn extends StatelessWidget {
       {super.key,
       required this.image,
       required this.title,
-      required this.isSelected, required this.onTap});
+      required this.isSelected, required this.onTap, required this.index});
 
+  final int index;
   final String image;
   final String title;
   final Function() onTap;
@@ -97,6 +98,7 @@ class SelectLangLearn extends StatelessWidget {
       child: Container(
         width: 163.w,
         height: 160.h,
+        margin: padOnly(right: index.isEven ? 16 : 0, down: 16),
         decoration: BoxDecoration(
           border: Border.all(
               color: isSelected ? Pallet.primary : Pallet.outlineBorder2,
@@ -105,6 +107,7 @@ class SelectLangLearn extends StatelessWidget {
         ),
         child: Center(
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               SizedBox(
                 height: 64.h,

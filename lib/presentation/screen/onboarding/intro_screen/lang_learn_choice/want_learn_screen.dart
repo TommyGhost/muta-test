@@ -8,7 +8,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-
 class WantLearn extends StatelessWidget {
   const WantLearn({super.key});
 
@@ -22,7 +21,7 @@ class WantLearn extends StatelessWidget {
           elevation: 0,
         ),
         body: SingleChildScrollView(
-          padding: padOnly(left: 17.w, right: 16.w, top: 24.h),
+          padding: padOnly(left: 17, right: 16, top: 24, down: 12),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -34,8 +33,8 @@ class WantLearn extends StatelessWidget {
                     color: Pallet.white),
               ),
               32.0.sbH,
-              StreamBuilder<GetLanguagesResponse?>(
-                stream: model.languages(),
+              FutureBuilder<GetLanguagesResponse?>(
+                future: model.languages(),
                 builder: (context, snapshot) {
                   GetLanguagesResponse? request = snapshot.data;
                   var languages = request?.data;
@@ -62,7 +61,7 @@ class WantLearn extends StatelessWidget {
                                       child: Icon(
                                         Icons.close,
                                         size: 80.w,
-                                        color: Pallet.red,
+                                        color: Colors.red,
                                       ),
                                     ),
                                   ),
@@ -76,23 +75,33 @@ class WantLearn extends StatelessWidget {
                                 ],
                               ),
                             )
-                          : GridView.builder(
-                              physics: const NeverScrollableScrollPhysics(),
-                              gridDelegate:
-                                  const SliverGridDelegateWithFixedCrossAxisCount(
-                                      crossAxisCount: 2),
-                              itemCount: languages?.length ?? 0,
-                              itemBuilder: (_, index) {
-                                Data? newLanguage = languages?[index];
-                                return SelectLangLearn(
-                                  image: newLanguage?.languageIcon ?? '',
-                                  title: newLanguage?.languageName ?? '',
-                                  isSelected: model.langDescription ==
-                                      newLanguage?.languageName,
-                                  onTap: () => model.updateLang(
-                                      newLanguage?.languageId ?? ''),
-                                );
-                              },
+                          : SizedBox(
+                              width: width(context),
+                              child: GridView.builder(
+                                shrinkWrap: true,
+                                padding: pad(),
+                                physics: const NeverScrollableScrollPhysics(),
+                                gridDelegate:
+                                    const SliverGridDelegateWithFixedCrossAxisCount(
+                                        crossAxisCount: 2),
+                                itemCount: languages?.length ?? 0,
+                                itemBuilder: (_, index) {
+                                  Data? newLanguage = languages?[index];
+                                  return SelectLangLearn(
+                                    index: index,
+                                    image: newLanguage?.languageIcon ?? '',
+                                    title: newLanguage?.languageName ?? '',
+                                    isSelected: model.langDescription ==
+                                        newLanguage?.languageId,
+                                    onTap: () {
+                                      model.updateLang(
+                                          newLanguage?.languageId ?? '');
+                                      model.updateLangName(
+                                          newLanguage?.languageName ?? '');
+                                    },
+                                  );
+                                },
+                              ),
                             ),
                     );
                   } else {
@@ -103,10 +112,16 @@ class WantLearn extends StatelessWidget {
               66.0.sbH,
               BabButton(
                 onPressed: () async {
-                  SharedPreferences prefs = await SharedPreferences.getInstance();
-                  prefs.setString(sharedPreference.languageKey, model.langDescription);
-                  navigationService.navigateTo(AppRoutes.rateProf,
-                      argument: model.langDescription);
+                  if (model.langName == '') {
+                    showCustomToast('Please select a language');
+                  } else {
+                    SharedPreferences prefs =
+                        await SharedPreferences.getInstance();
+                    prefs.setString(
+                        sharedPreference.languageKey, model.langDescription);
+                    navigationService.navigateTo(AppRoutes.rateProf,
+                        argument: model.langName);
+                  }
                 },
                 title: AppStrings.cont.toUpperCase(),
               ),

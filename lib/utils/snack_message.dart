@@ -15,7 +15,7 @@ Widget toast(String message, {bool? success}) {
           padding: const EdgeInsets.symmetric(horizontal: 20.0),
           width: double.infinity,
           height: 60.0,
-          color: !success! ? Pallet.red : Pallet.green,
+          color: !success! ? Colors.red : Pallet.green,
           child: Column(
             children: [
               Expanded(

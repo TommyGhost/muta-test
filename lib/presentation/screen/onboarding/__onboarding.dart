@@ -3,5 +3,4 @@ export 'sign_up/signup_ui.dart';
 export 'sign_up/signup_vm.dart';
 export 'sign_in/sign_in_ui.dart';
 export 'sign_in/sign_in_vm.dart';
-export 'nav.dart';
 export 'splash.dart';

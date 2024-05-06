@@ -1,9 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../locator.dart';
 import '../../utils/pallet.dart';
-import '../../widgets/shimmer_loader.ui.dart';
 import 'base.vm.dart';
 
 class BaseView<T extends BaseViewModel> extends StatefulWidget {

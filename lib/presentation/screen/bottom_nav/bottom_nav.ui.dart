@@ -1,4 +1,3 @@
-import 'package:babelos_app/utils/constants.dart';
 import 'package:babelos_app/utils/pallet.dart';
 import 'package:babelos_app/utils/widget_extensions.dart';
 import 'package:flutter/material.dart';
@@ -152,7 +151,7 @@ class _BottomNavState extends State<BottomNav> {
                             child: ElevatedButton(
                               style: ElevatedButton.styleFrom(
                                   padding: EdgeInsets.symmetric(vertical: 20.h),
-                                  backgroundColor: Pallet.black,
+                                  backgroundColor: Colors.black,
                                   shape: RoundedRectangleBorder(
                                       borderRadius:
                                           BorderRadius.circular(30.r))),
@@ -160,7 +159,6 @@ class _BottomNavState extends State<BottomNav> {
                                 SharedPreferences prefs =
                                     await SharedPreferences.getInstance();
                                 prefs.remove('token');
-                                storageService.deleteAllItems();
                                 pop();
                               },
                               child: Row(

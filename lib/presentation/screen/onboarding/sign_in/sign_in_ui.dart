@@ -106,7 +106,7 @@ class SignIn extends StatelessWidget {
                     ),
                     BabInkWell(
                       onTap: () {
-                        navigationService.navigateTo(AppRoutes.signIn);
+                        navigationService.navigateTo(AppRoutes.langSel);
                       },
                       child: Text(
                         ' ${AppStrings.signup}',

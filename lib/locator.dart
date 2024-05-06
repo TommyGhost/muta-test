@@ -15,7 +15,6 @@ import 'data/repository/user_repository.dart';
 import 'data/repository/user_repository_impl.dart';
 import 'data/services/app_cache.dart';
 import 'data/services/navigation_service.dart';
-import 'data/services/storage-service.dart';
 
 GetIt getIt = GetIt.I;
 
@@ -24,7 +23,6 @@ void setupLocator() {
 
   // Services
   getIt.registerLazySingleton<NavigationService>(() => NavigationService());
-  getIt.registerLazySingleton<StorageService>(() => StorageService());
   getIt.registerLazySingleton<SharedPreference>(() => SharedPreference());
   getIt.registerLazySingleton<UserRemoteImpl>(
       () => UserRemoteImpl(getIt<Dio>()));

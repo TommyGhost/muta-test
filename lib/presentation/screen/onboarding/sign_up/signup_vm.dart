@@ -1,5 +1,6 @@
 import 'package:babelos_app/domain/models/registration_response.dart';
 import 'package:babelos_app/presentation/base/base.vm.dart';
+import 'package:babelos_app/utils/pallet.dart';
 import 'package:flutter/material.dart';
 
 class SignUpViewModel extends BaseViewModel {
@@ -19,6 +20,26 @@ class SignUpViewModel extends BaseViewModel {
   setValidateMode(AutovalidateMode autovalidateMode) {
     _autovalidateMode = autovalidateMode;
     notifyListeners();
+  }
+
+  Color getTextColor(int length) {
+    if (length >= 8) {
+      notifyListeners();
+      return Pallet.validateGreen;
+    } else {
+      notifyListeners();
+      return Colors.red;
+    }
+  }
+
+  @override
+  void dispose() {
+    password.dispose();
+    firstName.dispose();
+    lastName.dispose();
+    email.dispose();
+    emails.dispose();
+    super.dispose();
   }
 
   check(String lang) async {

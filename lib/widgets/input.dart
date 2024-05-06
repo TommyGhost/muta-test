@@ -192,7 +192,7 @@ class InputField extends StatelessWidget {
             focusedBorder: focusedBorder ??
                 (!underline
                     ? OutlineInputBorder(
-                        borderSide: const BorderSide(color: Pallet.secondary),
+                        borderSide: const BorderSide(color: Pallet.primary),
                         borderRadius:
                             borderRadius ?? BorderRadius.circular(8.r),
                       )
@@ -221,25 +221,29 @@ class InputField extends StatelessWidget {
                       )),
             alignLabelWithHint: true,
             labelText: label == '' ? null : label,
-            labelStyle: MaterialStateTextStyle.resolveWith(
-              (states) {
-                // Modify the text style based on different states
-                if (states.contains(MaterialState.focused)) {
-                  return getMediumStyle(
-                      fontSize: FontSize.s12,
-                      height: 12.0.toFigmaHeight(12),
-                      color: Pallet.secondary);
-                } else if (states.contains(MaterialState.error)) {
-                  return getRegularStyle(
-                      fontSize: FontSize.s12,
-                      height: 12.0.toFigmaHeight(12),
-                      color: Colors.red);
-                } else {
-                  return getRegularStyle(
-                      fontSize: FontSize.s14, height: 21.0.toFigmaHeight(14));
-                }
-              },
-            ),
+            labelStyle: getRegularStyle(
+                      fontSize: FontSize.s13,
+                      height: 16.0.toFigmaHeight(13),
+                      color: Pallet.buttonOutline),
+            // MaterialStateTextStyle.resolveWith(
+            //   (states) {
+            //     // Modify the text style based on different states
+            //     if (states.contains(MaterialState.focused)) {
+            //       return getRegularStyle(
+            //           fontSize: FontSize.s13,
+            //           height: 16.0.toFigmaHeight(13),
+            //           color: Pallet.buttonOutline);
+            //     } else if (states.contains(MaterialState.error)) {
+            //       return getRegularStyle(
+            //           fontSize: FontSize.s13,
+            //           height: 16.0.toFigmaHeight(13),
+            //           color: Colors.red);
+            //     } else {
+            //       return getRegularStyle(
+            //           fontSize: FontSize.s13, height: 16.0.toFigmaHeight(13));
+            //     }
+            //   },
+            // ),
             isDense: true,
             hintText: hintText,
             hintStyle: getRegularStyle(fontSize: FontSize.s15, height: 24.0.toFigmaHeight(15), color: Pallet.wsBlue),

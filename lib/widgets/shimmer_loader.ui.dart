@@ -1,3 +1,4 @@
+import 'package:babelos_app/utils/sizes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_shimmer/flutter_shimmer.dart';
@@ -49,7 +50,7 @@ class _SkeletonState extends State<Skeleton>
         width: widget.width,
         padding: EdgeInsets.all(defaultPadding / 2),
         decoration: radiusBoxDecoration(
-          colors: [Pallet.red, Pallet.green, Colors.purple, Colors.white],
+          colors: [Colors.red, Pallet.green, Colors.purple, Colors.white],
           animation: _animation,
         ));
   }
@@ -107,7 +108,7 @@ class _LanguageShimmerCartState extends State<LanguageShimmerCart>
               itemCount: 5,
               itemBuilder: (_, index) {
                 return Container(
-                  margin: EdgeInsets.only(top: 10, bottom: 10, right: index.isEven ? 10 : 0),
+                  margin: padOnly(down: 16, right: index.isEven ? 16 : 0),
                   height: 160.h,
                   width: 163.w,
                   child: const Skeleton(),

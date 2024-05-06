@@ -35,7 +35,6 @@ dependencies:
   get_it: ^7.2.0
   oktoast: ^3.3.1
   flutter_screenutil: ^5.6.1
-  flutter_secure_storage: ^9.0.0
   flutter_hooks: ^0.20.1
   hooks_riverpod: ^2.3.7
   flutter_riverpod: ^2.1.3

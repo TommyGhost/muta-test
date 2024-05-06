@@ -49,8 +49,8 @@ class Navbar extends StatelessWidget implements PreferredSizeWidget {
       automaticallyImplyLeading: false,
       leading: showLeading == true
           ? Padding(
-            padding: padOnly(left: 17),
-            child: BabInkWell(
+              padding: padOnly(left: 17, right: 10),
+              child: BabInkWell(
                 onTap: onTap ??
                     () {
                       FocusManager.instance.primaryFocus?.unfocus();
@@ -63,12 +63,12 @@ class Navbar extends StatelessWidget implements PreferredSizeWidget {
                   fit: BoxFit.contain,
                 ),
               ),
-          )
+            )
           : null,
       // leadingWidth: 140.w,
       title: Text(title ?? "",
           style: getMediumStyle(
-              fontSize: FontSize.s17, color: color ?? Pallet.secondary)),
+              fontSize: FontSize.s17, color: color ?? Pallet.primary)),
       centerTitle: actions == null ? true : false,
       elevation: elevation ?? 2,
       backgroundColor: Pallet.bg,
@@ -77,6 +77,8 @@ class Navbar extends StatelessWidget implements PreferredSizeWidget {
       bottomOpacity: 0,
       toolbarHeight: height,
       systemOverlayStyle: SystemUiOverlayStyle.dark.copyWith(
+          statusBarColor: Colors.transparent,
+          statusBarIconBrightness: Brightness.light,
           systemNavigationBarColor: Pallet.bg,
           systemNavigationBarIconBrightness: Brightness.light),
       // actions: [

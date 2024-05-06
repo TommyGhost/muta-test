@@ -27,9 +27,9 @@ class HomeScreen extends StatelessWidget {
                 ),
               ),
             ),
-            SingleChildScrollView(
-              padding: padOnly(left: 17, right: 16, top: 10),
-              child: Column(
+            Expanded(
+              child: ListView(
+                padding: padOnly(left: 17, right: 16, top: 10),
                 children: [
                   22.0.sbH,
                   Container(
@@ -41,6 +41,7 @@ class HomeScreen extends StatelessWidget {
                     ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -133,10 +134,10 @@ class HomeScreen extends StatelessWidget {
                                 children: [
                                   Text(
                                     AppStrings.startLearn,
-                                    style: getRegularStyle(
+                                    style: getMediumStyle(
                                         fontSize: FontSize.s14,
-                                        height: 24.0.toFigmaHeight(14),
-                                        color: Pallet.white),
+                                        height: 16.0.toFigmaHeight(14),
+                                        color: Pallet.bg),
                                   ),
                                   Image.asset(
                                     AppImages.play,
@@ -151,7 +152,7 @@ class HomeScreen extends StatelessWidget {
                         ),
                         Image.asset(
                           AppImages.yoruba2,
-                          width: 86.w,
+                          width: 84.w,
                           height: 128.h,
                           fit: BoxFit.cover,
                         ),
@@ -214,12 +215,15 @@ class HomeScreen extends StatelessWidget {
                       Icon(
                         Icons.chevron_right,
                         size: 24.r,
+                        fill: 1.0,
+                        weight: 10.0,
                         color: Pallet.divider,
                       ),
                     ],
                   ),
                   16.0.sbH,
                   ListView.builder(
+                    padding: pad(),
                     physics: const NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
                     itemCount: 3,
@@ -229,7 +233,7 @@ class HomeScreen extends StatelessWidget {
                       height: 96.h,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(8.r),
-                        color: Pallet.buttonOutline,
+                        color: Pallet.outlineBorder2,
                       ),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -255,12 +259,12 @@ class HomeScreen extends StatelessWidget {
                             ),
                           ),
                           Padding(
-                            padding:
-                                padOnly(left: 16, down: 24, top: 24, right: 12),
+                            padding: padOnly(left: 16, right: 12),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Row(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Image.asset(
                                       AppImages.avatar,
@@ -335,7 +339,7 @@ class HomeScreen extends StatelessWidget {
                               topLeft: Radius.circular(8.r),
                               bottomRight: Radius.circular(8.r),
                             ),
-                            color: Pallet.white,
+                            color: Pallet.outlineBorder2,
                           ),
                           child: Center(
                             child: Text(
@@ -343,13 +347,13 @@ class HomeScreen extends StatelessWidget {
                               style: getBoldStyle(
                                   fontSize: FontSize.s12,
                                   height: 16.0.toFigmaHeight(12),
-                                  color: Pallet.bg),
+                                  color: Pallet.white),
                             ),
                           ),
                         ),
                         Padding(
                           padding:
-                              padOnly(left: 16, down: 24, top: 24, right: 12),
+                              padOnly(left: 16, right: 12),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
@@ -370,7 +374,7 @@ class HomeScreen extends StatelessWidget {
                                         style: getBoldStyle(
                                             fontSize: FontSize.s15,
                                             height: 24.0.toFigmaHeight(15),
-                                            color: Pallet.white),
+                                            color: Pallet.bg),
                                       ),
                                       4.0.sbH,
                                       Row(
@@ -380,7 +384,7 @@ class HomeScreen extends StatelessWidget {
                                             style: getRegularStyle(
                                                 fontSize: FontSize.s13,
                                                 height: 16.0.toFigmaHeight(13),
-                                                color: Pallet.visible),
+                                                color: Pallet.meCountry)
                                           ),
                                           8.0.sbW,
                                           Image.asset(
@@ -400,7 +404,7 @@ class HomeScreen extends StatelessWidget {
                                 style: getMediumStyle(
                                     fontSize: FontSize.s13,
                                     height: 16.0.toFigmaHeight(13),
-                                    color: Pallet.sliderOrange),
+                                    color: Pallet.bg),
                               ),
                             ],
                           ),
@@ -419,18 +423,23 @@ class HomeScreen extends StatelessWidget {
                     child: Row(
                       children: [
                         Image.asset(
-                          AppImages.play,
+                          AppImages.unlock,
                           width: 32.w,
                           height: 32.h,
                           fit: BoxFit.cover,
                         ),
-                        16.0.sbH,
-                        Text(
-                          AppStrings.upgrade,
-                          style: getMediumStyle(
-                              fontSize: FontSize.s14,
-                              height: 16.0.toFigmaHeight(14),
-                              color: Pallet.bg),
+                        16.0.sbW,
+                        SizedBox(
+                          width: 235.w,
+                          child: Flexible(
+                            child: Text(
+                              AppStrings.upgrade,
+                              style: getMediumStyle(
+                                  fontSize: FontSize.s14,
+                                  height: 16.0.toFigmaHeight(14),
+                                  color: Pallet.bg),
+                            ),
+                          ),
                         ),
                       ],
                     ),

@@ -25,6 +25,7 @@ class WelcomeHeader extends StatelessWidget {
               value: value,
               items: items,
               onChanged: onChanged,
+              noBorder: true,
             ),
           ),
           Row(
@@ -38,8 +39,8 @@ class WelcomeHeader extends StatelessWidget {
               20.0.sbW,
               Image.asset(
                 AppImages.profPic,
-                width: 36.w,
-                height: 36.h,
+                width: 38.w,
+                height: 38.h,
                 fit: BoxFit.cover,
               ),
             ],

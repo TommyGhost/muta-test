@@ -58,7 +58,7 @@ class DropDownSelect extends StatelessWidget {
             child: DropdownButtonFormField<String>(
               icon: Icon(
                 icon ?? Icons.arrow_drop_down,
-                color: color ?? Pallet.white.withOpacity(0),
+                color: color ?? Pallet.white,
                 size: 24.r,
               ),
               value: value,
@@ -80,6 +80,7 @@ class DropDownSelect extends StatelessWidget {
                             ),
                           ))
                       .toList(),
+              dropdownColor: Pallet.bg,
               onChanged: onChanged,
               isExpanded: true,
               validator: validator,
@@ -88,20 +89,20 @@ class DropDownSelect extends StatelessWidget {
                 errorMaxLines: 3,
                 border: InputBorder.none,
                 isDense: true,
-                fillColor: Pallet.white,
+                fillColor: Pallet.bg,
                 contentPadding: noBorder
                     ? EdgeInsets.zero
                     : EdgeInsets.symmetric(horizontal: 20.h, vertical: 16.w),
                 hintText: hint,
                 hintStyle: getRegularStyle(
                   fontSize: FontSize.s14,
-                  color: Pallet.grey500,
+                  color: Pallet.wsBlue,
                 ),
                 filled: noBorder ? false : true,
                 focusedBorder: noBorder
                     ? const OutlineInputBorder(borderSide: BorderSide.none)
                     : OutlineInputBorder(
-                        borderSide: const BorderSide(color: Pallet.secondary),
+                        borderSide: const BorderSide(color: Pallet.primary),
                         borderRadius: BorderRadius.circular(3.r),
                       ),
                 enabledBorder: noBorder
@@ -113,18 +114,18 @@ class DropDownSelect extends StatelessWidget {
                       ),
                 errorBorder: noBorder
                     ? const UnderlineInputBorder(
-                        borderSide: BorderSide(color: Pallet.red),
+                        borderSide: BorderSide(color: Colors.red),
                       )
                     : OutlineInputBorder(
-                        borderSide: const BorderSide(color: Pallet.red),
+                        borderSide: const BorderSide(color: Colors.red),
                         borderRadius: BorderRadius.circular(3.r),
                       ),
                 focusedErrorBorder: noBorder
                     ? const UnderlineInputBorder(
-                        borderSide: BorderSide(color: Pallet.red),
+                        borderSide: BorderSide(color: Colors.red),
                       )
                     : OutlineInputBorder(
-                        borderSide: const BorderSide(color: Pallet.red),
+                        borderSide: const BorderSide(color: Colors.red),
                         borderRadius: BorderRadius.circular(3.r),
                       ),
               ),

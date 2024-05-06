@@ -38,6 +38,8 @@ class IntroScreen extends StatelessWidget {
                     AppStrings.africa,
                     style: TextStyle(
                         fontSize: FontSize.s64,
+                        fontFamily: 'Magica',
+                        fontWeight: FontWeight.w400,
                         height: 72.0.toFigmaHeight(64),
                         color: Pallet.white),
                   ),

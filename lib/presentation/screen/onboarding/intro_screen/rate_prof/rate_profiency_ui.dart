@@ -3,9 +3,7 @@ import 'package:babelos_app/presentation/screen/onboarding/intro_screen/rate_pro
 import 'package:babelos_app/routes/routes.dart';
 import 'package:babelos_app/utils/__utils.dart';
 import 'package:babelos_app/widgets/__widgets.dart';
-import 'package:babelos_app/widgets/dumb_widgets/language_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class RateProficiency extends StatelessWidget {
@@ -23,7 +21,7 @@ class RateProficiency extends StatelessWidget {
           elevation: 0,
         ),
         body: SingleChildScrollView(
-          padding: padOnly(left: 17.w, right: 16.w, top: 24.h),
+          padding: padOnly(left: 17, right: 16, top: 24, down: 12),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -65,11 +63,15 @@ class RateProficiency extends StatelessWidget {
               152.0.sbH,
               BabButton(
                 onPressed: () async {
-                  SharedPreferences prefs =
-                      await SharedPreferences.getInstance();
-                  prefs.setString(
-                      sharedPreference.levelKey, model.levelDescription);
-                  navigationService.navigateTo(AppRoutes.signUp);
+                  if (model.levelDescription == 'ok') {
+                    showCustomToast('Please select your proficiency level');
+                  } else {
+                    SharedPreferences prefs =
+                        await SharedPreferences.getInstance();
+                    prefs.setString(
+                        sharedPreference.levelKey, model.levelDescription);
+                    navigationService.navigateTo(AppRoutes.signUp);
+                  }
                 },
                 title: AppStrings.cont.toUpperCase(),
               ),
