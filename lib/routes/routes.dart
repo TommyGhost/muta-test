@@ -3,7 +3,7 @@ import 'package:babelos_app/presentation/screen/onboarding/intro_screen/lang_sel
 import 'package:babelos_app/presentation/screen/onboarding/intro_screen/lang_learn_choice/want_learn_screen.dart';
 import 'package:babelos_app/presentation/screen/onboarding/intro_screen/rate_prof/rate_profiency_ui.dart';
 import 'package:babelos_app/presentation/screen/onboarding/sign_in/sign_in_details.dart';
-import 'package:babelos_app/presentation/screen/onboarding/sign_up/details/sign_up_dets_ui.dart';
+import 'package:babelos_app/presentation/screen/onboarding/sign_up/sign_up_dets_ui.dart';
 import 'package:flutter/material.dart';
 import '../presentation/screen/bottom_nav/bottom_nav.ui.dart';
 

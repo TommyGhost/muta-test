@@ -68,9 +68,7 @@ class NavigationBarItem extends StatelessWidget {
                   height: 16.0.toFigmaHeight(12),
                   color: isSelected
                       ? Pallet.primary
-                      : Theme.of(context)
-                          .bottomNavigationBarTheme
-                          .unselectedItemColor,
+                      : Pallet.white,
                 ),
               ),
             ],
